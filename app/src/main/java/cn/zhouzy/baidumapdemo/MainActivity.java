@@ -16,7 +16,6 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SDKInitializer.initialize(getApplicationContext());
         setContentView(R.layout.activity_main);
         mMapView = (MapView) findViewById(R.id.mian_mapview_map);
 //        MKOfflineMap mOffline = new MKOfflineMap();
