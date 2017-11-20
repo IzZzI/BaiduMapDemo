@@ -17,8 +17,6 @@ public class BaseApplication extends Application {
     }
 
     public void init(){
-        //初始化百度地图
-        SDKInitializer.initialize(this);
     }
 
 }

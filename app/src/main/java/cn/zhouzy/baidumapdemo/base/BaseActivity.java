@@ -2,6 +2,7 @@ package cn.zhouzy.baidumapdemo.base;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import butterknife.ButterKnife;
 
@@ -11,7 +12,7 @@ import butterknife.ButterKnife;
  * BaseActivity
  */
 
-public class BaseActivity extends Activity {
+public class BaseActivity extends AppCompatActivity {
 
     @Override
     public void setContentView(int layoutResID) {

@@ -2,6 +2,7 @@ package cn.zhouzy.baidumapdemo.util;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+import android.os.Environment;
 import android.util.Log;
 
 import java.io.File;
@@ -39,17 +40,23 @@ public class AssetsUtils {
 
     /**
      * 复制asserts文件到sd卡
+     *
      * @param context
      * @param assertPath
      * @param sdCardPath
      */
-    public static void putAssertsFileToSDCard(Context context, String assertPath, String sdCardPath) {
+    public static void putAssetsFileToSDCard(Context context, String assertPath, String sdCardPath) {
         AssetManager assetManager = context.getAssets();
         try {
-            File file = new File(sdCardPath + File.separator + assertPath.substring(assertPath.lastIndexOf(File.separator)));
+
+
+            File file = new File(sdCardPath + File.separator + assertPath);
             //文件不存在
             if (!file.exists()) {
                 LogUtils.e("文件不存在,复制文件到SD卡");
+                if (!file.getParentFile().exists()) {
+                    LogUtils.e(file.getParentFile().mkdirs() + "");
+                }
                 //创建文件
                 file.createNewFile();
                 //获取输入流
@@ -68,12 +75,13 @@ public class AssetsUtils {
                 fileOutputStream.close();
                 assertInputStream.close();
                 LogUtils.e("复制完毕");
-            }else {
+            } else {
                 //文件已存在
                 LogUtils.e("文件已存在");
             }
         } catch (IOException e) {
             e.printStackTrace();
+            LogUtils.e(e.getMessage());
         }
     }
 

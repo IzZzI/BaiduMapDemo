@@ -35,6 +35,9 @@
 
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".OfflineDemo">
+
+        </activity>
+        <activity android:name=".RequestPermissionActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
