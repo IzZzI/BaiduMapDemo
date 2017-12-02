@@ -3,6 +3,7 @@ package cn.zhouzy.baidumapdemo;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -24,6 +25,7 @@ import com.baidu.mapapi.map.offline.MKOLUpdateElement;
 import com.baidu.mapapi.map.offline.MKOfflineMap;
 import com.baidu.mapapi.map.offline.MKOfflineMapListener;
 
+import java.io.File;
 import java.util.ArrayList;
 
 /* 此Demo用来演示离线地图的下载和显示 */
@@ -40,10 +42,8 @@ public class OfflineDemo extends Activity implements MKOfflineMapListener {
      */
     private ArrayList<MKOLUpdateElement> localMapList = null;
     private LocalMapAdapter lAdapter = null;
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SDKInitializer.initialize(getApplicationContext());
         setContentView(R.layout.activity_offline);
         mOffline = new MKOfflineMap();
         mOffline.init(this);
@@ -254,7 +254,6 @@ public class OfflineDemo extends Activity implements MKOfflineMapListener {
                 if (update != null) {
                     stateView.setText(String.format("%s : %d%%", update.cityName,
                             update.ratio));
-                    Toast.makeText(OfflineDemo.this ,"下载:" + update.ratio, Toast.LENGTH_SHORT).show();
                     updateView();
                 }
             }

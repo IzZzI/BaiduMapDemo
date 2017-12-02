@@ -30,6 +30,8 @@ public class RequestPermissionActivity extends BaseActivity {
     Button btnCopy;
     @Bind(R.id.btn_open_map)
     Button btnOpenMap;
+    @Bind(R.id.btn_download_map)
+    Button btnDownload;
     private String assetsPath = "chengdu_75.dat";
 
     @Override
@@ -54,6 +56,14 @@ public class RequestPermissionActivity extends BaseActivity {
             public void onClick(View v) {
                 Intent in = new Intent(RequestPermissionActivity.this, MainActivity.class);
                 startActivity(in);
+            }
+        });
+
+        btnDownload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RequestPermissionActivity.this, OfflineDemo.class);
+                startActivity(intent);
             }
         });
 
